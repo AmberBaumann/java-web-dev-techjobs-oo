@@ -28,8 +28,8 @@ public class CoreCompetency {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CoreCompetency)) return false;
-        CoreCompetency that = (CoreCompetency) o;
-        return id == that.id;
+        CoreCompetency coreCompetency = (CoreCompetency) o;
+        return getId() == coreCompetency.getId();
     }
 
     @Override
