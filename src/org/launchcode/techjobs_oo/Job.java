@@ -98,20 +98,30 @@ public class Job {
 
     public String toString(){
         String noData= "Data not available";
+        String output;
 
-        if(name.isEmpty()){
-             name = noData;
-        } else if (employer.getValue() == null || employer.getValue().equals("")){
-            employer.setValue(noData);
-        } else if(location.getValue() == null || location.getValue().equals("")){
-            location.setValue(noData);
-        } else if(positionType.getValue() == null || positionType.getValue().equals("")){
-            positionType.setValue(noData);
-        } else if(coreCompetency.getValue() == null || coreCompetency.getValue().equals("")){
-            coreCompetency.setValue(noData);
-        }
-        return "\nID: " + this.getId() + "\nName: " + this.getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation()
+            if (name.isEmpty()) {
+                name = noData;
+            }
+            if (employer.getValue() == null || employer.getValue().equals("")) {
+                employer.setValue(noData);
+            }
+            if (location.getValue() == null || location.getValue().equals("")) {
+                location.setValue(noData);
+            }
+            if (positionType.getValue() == null || positionType.getValue().equals("")) {
+                positionType.setValue(noData);
+            }
+            if (coreCompetency.getValue() == null || coreCompetency.getValue().equals("")) {
+                coreCompetency.setValue(noData);
+            }
+            output = "\nID: " + this.getId() + "\nName: " + this.getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation()
                     + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + this.getCoreCompetency() +"\n";
+        System.out.println(positionType.getValue().equals(noData));
+        if(name.equals(noData) && employer.getValue().equals(noData) && location.getValue().equals(noData) && positionType.getValue().equals(noData) && coreCompetency.getValue().equals(noData)){
+            output = "OOPS! Job does not exist.";
+        }
+        return output;
     }
 
 }

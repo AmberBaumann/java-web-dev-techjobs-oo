@@ -1,4 +1,5 @@
 package Tests;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
@@ -73,7 +74,8 @@ public class JobTest {
     @Test
     public void testIfJobOnlyContainsIdField(){
         Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        String expected;
+        String expected = "OOPS! Job does not exist.";
+        assertEquals(expected, job.toString());
     }
 }
 
