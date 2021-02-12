@@ -21,10 +21,7 @@ public class JobTest {
     //UNSURE HOW TO CHECK IF THEY DIFFER BY ONE
     @Test
     public void testSettingJobId(){
-        //testing that job1 Id does not equal job2 Id
-        assertTrue(test_job1.getId() != test_job2.getId());
-        //testing that job1 Id is less than job2 Id - how to check difference is by 1??
-        assertTrue(test_job1.getId() < test_job2.getId());
+        assertEquals(1, test_job2.getId() - test_job1.getId());
     }
 
     @Test
@@ -47,4 +44,37 @@ public class JobTest {
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
         assertEquals(job1.getId(), job2.getId());
     }
+
+    @Test
+    public void testToString(){
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+        Boolean expected = job.toString().startsWith("\n");
+        Boolean expected2 = job.toString().endsWith("\n");
+        Boolean compareThis = expected2 == expected;
+        assertEquals(true, compareThis);
+    }
+
+    @Test
+    public void testStringContainsLabelsAndFields(){
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+        String expected = "\nID: " + job.getId() + "\nName: " + job.getName() + "\nEmployer: " + job.getEmployer() + "\nLocation: " + job.getLocation()
+                                   + "\nPosition Type: " + job.getPositionType() + "\nCore Competency: " + job.getCoreCompetency() +"\n";
+        assertEquals(expected, job.toString());
+    }
+
+    @Test
+    public void testIfFieldIsEmpty(){
+        Job job = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
+        String expected = "\nID: " + job.getId() + "\nName: " + "Data not available" + "\nEmployer: " + job.getEmployer() + "\nLocation: " + job.getLocation()
+                + "\nPosition Type: " + job.getPositionType() + "\nCore Competency: " + job.getCoreCompetency() +"\n";
+        assertEquals(expected, job.toString());
+    }
+
+    @Test
+    public void testIfJobOnlyContainsIdField(){
+        Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        String expected;
+    }
 }
+
+
