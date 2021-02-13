@@ -117,7 +117,7 @@ public class Job {
             }
             output = "\nID: " + this.getId() + "\nName: " + this.getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation()
                     + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + this.getCoreCompetency() +"\n";
-        System.out.println(positionType.getValue().equals(noData));
+
         if(name.equals(noData) && employer.getValue().equals(noData) && location.getValue().equals(noData) && positionType.getValue().equals(noData) && coreCompetency.getValue().equals(noData)){
             output = "OOPS! Job does not exist.";
         }
